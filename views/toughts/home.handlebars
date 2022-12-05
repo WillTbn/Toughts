@@ -1,0 +1,49 @@
+<div class="mt-5 pt-5">
+
+{{#if search}}
+    <h1 class="h4 font-weight-bolder">Você esta buscand por: <span>{{search}}</span></h1>
+    {{#if qty}}
+        <p class="text-muted">foram encontrados {{qty}}</p>
+    {{else}}
+        <p class="text-muted">Nenhum pensamento foi encontrado para sua pesquisa </p>
+    {{/if}}
+{{else}}
+    <h1 class="h4 font-weight-bolder">Conheça alguns dos nossos pensamentos:</h1>
+{{/if}}
+<form action="/" method="get" class="d-flex align-items-center">
+    <input type="text" name="search" id="search" class="form-control-home" placeholder="Está Buscando por algo?">
+    <input type="submit" class="btn btn-warning-tought my-3 font-weight-bolder text-light" value="Buscar">
+</form>
+<div class="d-flex align-items-center">
+    <span>Ordernar por:</span>
+    <form action="/" method="get">
+        <input type="hidden" name="search" value="{{this.search}}">
+        <input type="hidden" name="order" value="new">
+        <button type="submit" class="btn btn-warning-tought m-3 font-weight-bolder text-light" >
+            <i class="bi bi-arrow-up"></i>
+        </button>
+    </form>
+    <form action="/" method="get">
+        <input type="hidden" name="search" value="{{this.search}}">
+        <input type="hidden" name="order" value="old">
+        <button type="submit" class="btn btn-warning-tought m-3 font-weight-bolder text-light" >
+            <i class="bi bi-arrow-down"></i>
+        </button>
+    </form>
+    <a href="/" class="text-decoration-none text-light font-weight-bold">Limpar</a>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12">
+        <ul class="list-group list-group-flush ">
+            {{#each tought}}
+                <li class="list-group-item list-group-dark align-items-center border-bottom border-warning">
+                    {{this.title}}
+                    <div class="d-block ">
+                        por:<i class="text-monospace text-muted">{{this.User.name}}</i>
+                    </div>
+                </li> 
+            {{/each}}
+        </ul>
+    </div>
+</div>
+</div>

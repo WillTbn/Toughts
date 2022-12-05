@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between">
+    <h1>dashboard</h1>
+    <div class="d-flex">
+        <a href="/toughts/add" class="btn btn-warning-tought" style="max-height: 3rem;align-self: center;">Criar pensamento</a>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12">
+        <ul class="list-group list-group-flush ">
+            {{#each toughts}}
+                <li class="list-group-item list-group-dark d-flex justify-content-between align-items-center border-bottom border-warning">
+                    {{this.title}}
+                    <div class="d-flex">
+                        <a href="/toughts/edit/{{this.id}}" class="btn p-2 btn-info" style="max-height: 3rem;align-self: center;">Editar</a>
+                        
+                        <form  class="p-2" action="/toughts/destroy" method="post">
+                            <input type="hidden" name="id" value="{{this.id}}">
+                            <input type="submit" value="Excluir" class="btn btn-danger">
+                        </form>
+
+                    </div>
+                </li>                
+            {{/each}}
+        </ul>
+        {{#if empty}}
+
+        <blockquote class="blockquote m-5">
+            <p>Ainda não há nenhum pensamento seu, comece a criar  <a class="text-warning" href="/toughts/add">por aqui</a></p>
+        </blockquote>
+        {{/if}}
+    </div>
+</div>
